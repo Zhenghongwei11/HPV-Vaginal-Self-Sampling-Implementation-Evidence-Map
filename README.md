@@ -41,8 +41,8 @@ python3 scripts/build_prisma_flow.py
 
 ## Build the canonical review bundle ZIP (for GitHub Release assets)
 ```bash
-bash scripts/build_public_review_bundle.sh v1.0.0
+bash scripts/build_public_review_bundle.sh v1.0.1
 ```
 Outputs:
-- `dist/public_review_bundle_v1.0.0.zip`
+- `dist/public_review_bundle_v1.0.1.zip`
 - `dist/CHECKSUMS.sha256`

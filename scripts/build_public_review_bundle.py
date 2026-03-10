@@ -50,7 +50,7 @@ def main() -> None:
     parser = argparse.ArgumentParser(description="Build a deterministic public review bundle ZIP + checksums.")
     parser.add_argument("--repo-root", default=".", help="Repo root to package.")
     parser.add_argument("--out-dir", default="dist", help="Output directory.")
-    parser.add_argument("--version", default="v1.0.0", help="Version tag to embed in filename.")
+    parser.add_argument("--version", default="v1.0.1", help="Version tag to embed in filename.")
     args = parser.parse_args()
 
     repo_root = Path(args.repo_root).resolve()
