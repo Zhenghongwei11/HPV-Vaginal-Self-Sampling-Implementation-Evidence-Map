@@ -1,0 +1,4 @@
+figure_id	output_path	script	inputs	description
+Figure_1	plots/publication/evidence_gap_heatmap.pdf	scripts/build_evidence_map_counts_and_plots.py	results/map/evidence_map_counts.tsv;results/summary/included_target_population_counts.tsv;results/summary/included_delivery_model_counts.tsv	Delivery model × target population evidence map
+Figure_2	plots/publication/followup_reporting_heatmap.pdf	scripts/build_evidence_map_counts_and_plots.py	results/summary/included_followup_reporting_level_counts.tsv;results/summary/followup_closure_by_delivery_model.tsv	Follow-up reporting level × delivery model
+Figure_S1	plots/publication/prisma_flow.pdf	scripts/build_prisma_flow.py	results/summary/prisma_flow_numbers.tsv;results/summary/exclusion_reason_counts.tsv	Study selection flow

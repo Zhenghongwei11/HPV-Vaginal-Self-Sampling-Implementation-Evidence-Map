@@ -1,0 +1,6 @@
+delivery_model	completion_reported	none	referral_only
+chw_door_to_door	4	1	0
+clinic_pickup_return_clinic	10	8	46
+mail_to_home_return_mail	11	7	22
+outreach_event_distribution	8	6	18
+unk	30	20	44

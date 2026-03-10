@@ -1,0 +1,6 @@
+delivery_model	n_studies	reach_denominator_reported	uptake_n_reported	uptake_pct_reported	assay_type_reported	triage_pathway_reported	followup_support_reported	followup_referral_mentioned	followup_completion_reported	followup_completion_pct_reported
+chw_door_to_door	5	0.0	0.2	0.0	0.0	1.0	0.4	0.8	0.8	0.8
+clinic_pickup_return_clinic	64	0.109375	0.140625	0.171875	0.375	0.921875	0.0625	0.875	0.15625	0.15625
+mail_to_home_return_mail	40	0.3	0.275	0.25	0.175	0.875	0.425	0.825	0.275	0.275
+outreach_event_distribution	32	0.125	0.125	0.1875	0.28125	0.8125	0.125	0.8125	0.25	0.25
+unk	94	0.1702127659574468	0.2872340425531915	0.24468085106382978	0.26595744680851063	0.8191489361702128	0.1276595744680851	0.7872340425531915	0.3191489361702128	0.3191489361702128

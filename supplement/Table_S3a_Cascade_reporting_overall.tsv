@@ -1,0 +1,10 @@
+element	proportion	n_studies
+reach_denominator_reported	0.16595744680851063	235
+uptake_n_reported	0.22127659574468084	235
+uptake_pct_reported	0.2127659574468085	235
+assay_type_reported	0.2765957446808511	235
+triage_pathway_reported	0.8595744680851064	235
+followup_support_reported	0.16595744680851063	235
+followup_referral_mentioned	0.8212765957446808	235
+followup_completion_reported	0.2680851063829787	235
+followup_completion_pct_reported	0.2680851063829787	235
