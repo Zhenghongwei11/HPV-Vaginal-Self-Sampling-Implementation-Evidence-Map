@@ -25,6 +25,7 @@ Export PubMed records via E-utilities:
 ```bash
 bash scripts/run_pubmed_exports.sh
 ```
+This generates `results/search/pubmed_query_a.tsv` and `results/search/pubmed_query_b.tsv` locally; these raw exports are not versioned in the public repository.
 
 Screen + chart into the evidence-map schema:
 ```bash
