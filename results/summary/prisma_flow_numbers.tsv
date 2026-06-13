@@ -2,5 +2,7 @@ metric	value
 records_identified	2133
 duplicates_removed	417
 records_screened	1716
-records_excluded	1481
-studies_included	235
+records_excluded	1186
+records_included	530
+implementation_core_records	389
+non_core_contextual_records	141

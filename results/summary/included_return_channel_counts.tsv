@@ -1,5 +1,10 @@
 return_channel	n
-unk	94
-in_person	64
-mail	40
-mixed	37
+unk	193
+in_person	125
+mixed	102
+mail	80
+clinic	23
+school_community	3
+outreach_event	2
+chw	1
+phone_clinic	1

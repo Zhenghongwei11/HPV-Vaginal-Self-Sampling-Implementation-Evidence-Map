@@ -2,5 +2,5 @@ metric	value
 search_export_files	2
 search_export_total_rows	2133
 candidates_dedup_screened	1716
-included_total	235
-excluded_total	1481
+included_total	530
+excluded_total	1186

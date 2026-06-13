@@ -1,0 +1,7 @@
+target_population	chw_door_to_door	clinic_pickup_return_clinic	home_mail	mail_to_home_return_mail	mixed_or_multiarm	outreach_event_distribution	unk
+migrant_minority	2	5	0	3	0	3	11
+never_screened	0	4	0	6	0	5	5
+nonattenders	0	12	2	15	1	3	26
+other	6	47	1	14	0	52	66
+rural_low_access	1	4	0	0	1	9	3
+underscreened_general	2	25	0	25	1	14	15

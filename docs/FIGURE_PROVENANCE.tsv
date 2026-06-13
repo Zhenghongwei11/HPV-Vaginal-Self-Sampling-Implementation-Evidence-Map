@@ -1,4 +1,6 @@
-figure_id	output_path	script	inputs	description
-Figure_1	plots/publication/evidence_gap_heatmap.pdf	scripts/build_evidence_map_counts_and_plots.py	results/map/evidence_map_counts.tsv;results/summary/included_target_population_counts.tsv;results/summary/included_delivery_model_counts.tsv	Delivery model × target population evidence map
-Figure_2	plots/publication/followup_reporting_heatmap.pdf	scripts/build_evidence_map_counts_and_plots.py	results/summary/included_followup_reporting_level_counts.tsv;results/summary/followup_closure_by_delivery_model.tsv	Follow-up reporting level × delivery model
-Figure_S1	plots/publication/prisma_flow.pdf	scripts/build_prisma_flow.py	results/summary/prisma_flow_numbers.tsv;results/summary/exclusion_reason_counts.tsv	Study selection flow
+figure	output_file	anchor_table	script
+PRISMA-ScR flow diagram	plots/publication/prisma_flow.pdf	results/summary/prisma_flow_numbers.tsv	scripts/build_prisma_flow.py
+Broad delivery model by target population matrix	plots/publication/evidence_gap_heatmap.pdf	results/summary/figure_matrices/Figure2_delivery_model_by_target_population.tsv	scripts/build_evidence_map_counts_and_plots.py
+Implementation-core delivery model by target population matrix	plots/publication/evidence_gap_heatmap_implementation_core.pdf	results/summary_core/figure_matrices/Figure2_delivery_model_by_target_population.tsv	scripts/build_evidence_map_counts_and_plots.py
+Broad follow-up reporting by delivery model matrix	plots/publication/followup_reporting_heatmap.pdf	results/summary/figure_matrices/Figure3_followup_reporting_by_delivery_model.tsv	scripts/build_evidence_map_counts_and_plots.py
+Implementation-core follow-up reporting by delivery model matrix	plots/publication/followup_reporting_heatmap_implementation_core.pdf	results/summary_core/figure_matrices/Figure3_followup_reporting_by_delivery_model.tsv	scripts/build_evidence_map_counts_and_plots.py

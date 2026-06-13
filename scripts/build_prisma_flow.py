@@ -36,7 +36,9 @@ def main() -> int:
     ap.add_argument("--overview", type=Path, default=Path("results/summary/overview.tsv"))
     ap.add_argument("--exclusion-reasons", type=Path, default=Path("results/summary/exclusion_reason_counts.tsv"))
     ap.add_argument("--out-pdf", type=Path, default=Path("plots/publication/prisma_flow.pdf"))
+    ap.add_argument("--out-png", type=Path, default=Path("plots/publication/png/prisma_flow.png"))
     ap.add_argument("--out-numbers", type=Path, default=Path("results/summary/prisma_flow_numbers.tsv"))
+    ap.add_argument("--core-summary", type=Path, default=Path("results/summary/implementation_core_summary.tsv"))
     args = ap.parse_args()
 
     overview = _read_tsv(args.overview)
@@ -47,6 +49,9 @@ def main() -> int:
     n_included = _get_metric(overview, "included_total", 0)
     n_excluded = _get_metric(overview, "excluded_total", 0)
     n_duplicates_removed = max(0, n_identified - n_candidates) if (n_identified and n_candidates) else 0
+    core_summary = _read_tsv(args.core_summary)
+    n_core = _get_metric(core_summary, "implementation_core_records", 0)
+    n_non_core = _get_metric(core_summary, "non_core_records", 0)
 
     reasons: list[tuple[str, int]] = []
     if not reasons_df.empty and {"reason_code", "n"}.issubset(set(reasons_df.columns)):
@@ -69,7 +74,9 @@ def main() -> int:
             {"metric": "duplicates_removed", "value": n_duplicates_removed},
             {"metric": "records_screened", "value": n_candidates},
             {"metric": "records_excluded", "value": n_excluded},
-            {"metric": "studies_included", "value": n_included},
+            {"metric": "records_included", "value": n_included},
+            {"metric": "implementation_core_records", "value": n_core},
+            {"metric": "non_core_contextual_records", "value": n_non_core},
         ]
     ).to_csv(args.out_numbers, sep="\t", index=False)
 
@@ -111,11 +118,19 @@ def main() -> int:
     def arrow(x0: float, y0: float, x1: float, y1: float) -> None:
         ax.annotate("", xy=(x1, y1), xytext=(x0, y0), arrowprops={"arrowstyle": "->", "lw": 1.2, "color": "#111827"})
 
-    ax.text(0.5, 0.965, "PRISMA-ScR Flow (Record-level; abstract/OA charting)", ha="center", va="top", fontsize=14, weight="bold")
+    ax.text(
+        0.5,
+        0.965,
+        "PRISMA-ScR Flow (Record-level; abstract/open-access charting)",
+        ha="center",
+        va="top",
+        fontsize=14,
+        weight="bold",
+    )
 
     # Main vertical flow boxes
     main_x, main_w, main_h = 0.12, 0.76, 0.10
-    y1, y2, y3, y4, y5 = 0.83, 0.67, 0.51, 0.35, 0.19
+    y1, y2, y3, y4, y5, y6 = 0.84, 0.69, 0.54, 0.38, 0.22, 0.10
 
     box(
         main_x,
@@ -165,31 +180,45 @@ def main() -> int:
         y5,
         main_w,
         main_h,
-        f"Studies included in evidence map\n(n = {n_included})",
+        f"Records included in evidence map\n(n = {n_included})",
         fs=12,
     )
+
+    if n_core or n_non_core:
+        box(
+            main_x,
+            y6,
+            main_w,
+            0.08,
+            f"Implementation-core records used for main descriptive and cascade analyses\n(n = {n_core}; broader contextual/non-core records n = {n_non_core})",
+            fs=11,
+        )
 
     # Arrows
     arrow(0.5, y1, 0.5, y2 + main_h)
     arrow(0.5, y2, 0.5, y3 + main_h)
     arrow(0.5, y3, 0.5, y4 + 0.14)
     arrow(0.5, y4, 0.5, y5 + main_h)
+    if n_core or n_non_core:
+        arrow(0.5, y5, 0.5, y6 + 0.08)
 
     # Footnote
     foot = (
         "Note: Eligibility and charting were performed at the record level using sufficiently detailed abstracts "
         "and/or open-access full text under a reproducible access policy; no separate full-text retrieval step was required."
     )
-    ax.text(0.5, 0.06, foot, ha="center", va="center", fontsize=9, color="#374151", wrap=True)
+    ax.text(0.5, 0.035, foot, ha="center", va="center", fontsize=9, color="#374151", wrap=True)
 
     fig.savefig(args.out_pdf)
+    args.out_png.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(args.out_png, dpi=300)
     plt.close(fig)
 
     print(f"Wrote: {args.out_pdf}")
+    print(f"Wrote: {args.out_png}")
     print(f"Wrote: {args.out_numbers}")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

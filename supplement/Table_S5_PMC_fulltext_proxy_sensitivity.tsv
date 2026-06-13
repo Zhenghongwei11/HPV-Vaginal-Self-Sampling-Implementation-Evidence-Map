@@ -1,0 +1,40 @@
+metric	access_proxy_group	n_records	reported_or_extractable_n	reported_or_extractable_pct
+Country/region extractable	PMCID available	359	120	33.4
+Country/region extractable	No PMCID recorded	171	57	33.3
+Country/region extractable	Difference: PMCID available minus no PMCID (percentage points)			0.1
+Income level extractable	PMCID available	359	120	33.4
+Income level extractable	No PMCID recorded	171	57	33.3
+Income level extractable	Difference: PMCID available minus no PMCID (percentage points)			0.1
+Delivery model classifiable	PMCID available	359	260	72.4
+Delivery model classifiable	No PMCID recorded	171	96	56.1
+Delivery model classifiable	Difference: PMCID available minus no PMCID (percentage points)			16.3
+Return channel classifiable	PMCID available	359	246	68.5
+Return channel classifiable	No PMCID recorded	171	91	53.2
+Return channel classifiable	Difference: PMCID available minus no PMCID (percentage points)			15.3
+Follow-up support reported	PMCID available	359	58	16.2
+Follow-up support reported	No PMCID recorded	171	29	17.0
+Follow-up support reported	Difference: PMCID available minus no PMCID (percentage points)			-0.8
+Triage pathway classifiable	PMCID available	359	281	78.3
+Triage pathway classifiable	No PMCID recorded	171	142	83.0
+Triage pathway classifiable	Difference: PMCID available minus no PMCID (percentage points)			-4.8
+Invitation/reach denominator reported	PMCID available	359	63	17.5
+Invitation/reach denominator reported	No PMCID recorded	171	39	22.8
+Invitation/reach denominator reported	Difference: PMCID available minus no PMCID (percentage points)			-5.3
+Participation count reported	PMCID available	359	80	22.3
+Participation count reported	No PMCID recorded	171	43	25.1
+Participation count reported	Difference: PMCID available minus no PMCID (percentage points)			-2.9
+Uptake percentage reported	PMCID available	359	78	21.7
+Uptake percentage reported	No PMCID recorded	171	39	22.8
+Uptake percentage reported	Difference: PMCID available minus no PMCID (percentage points)			-1.1
+Follow-up completion reported	PMCID available	359	20	5.6
+Follow-up completion reported	No PMCID recorded	171	22	12.9
+Follow-up completion reported	Difference: PMCID available minus no PMCID (percentage points)			-7.3
+Follow-up completion percentage reported	PMCID available	359	20	5.6
+Follow-up completion percentage reported	No PMCID recorded	171	21	12.3
+Follow-up completion percentage reported	Difference: PMCID available minus no PMCID (percentage points)			-6.7
+Equity-stratified result reported	PMCID available	359	30	8.4
+Equity-stratified result reported	No PMCID recorded	171	11	6.4
+Equity-stratified result reported	Difference: PMCID available minus no PMCID (percentage points)			1.9
+Cost/resource information reported	PMCID available	359	47	13.1
+Cost/resource information reported	No PMCID recorded	171	22	12.9
+Cost/resource information reported	Difference: PMCID available minus no PMCID (percentage points)			0.2

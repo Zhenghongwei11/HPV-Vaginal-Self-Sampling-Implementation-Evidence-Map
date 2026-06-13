@@ -1,6 +1,6 @@
 # Charting Codebook (Study Index + Evidence Map)
 
-This codebook defines how to chart included studies into `results/map/study_index.tsv` and how to derive `results/map/evidence_map_counts.tsv`.
+This codebook defines how to chart included records into `results/map/study_index.tsv` and how to derive `results/map/evidence_map_counts.tsv`.
 
 ## 1) Stable Identifiers
 - Prefer PMID; else DOI; else stable URL + internal `record_id`.
@@ -80,9 +80,9 @@ Each row is a cell count with fields:
 - `setting`
 - `income_level`
 - `followup_reporting_level` (`none`/`referral_only`/`completion_reported`)
-- `n_studies`
+- `n_records`
 
 ## 4) Decision Rules (important)
-- If delivery involves multiple arms, set `delivery_model=mixed_or_multiarm` and specify arms in notes; counts treat the study as one unit unless arms are separable in charting.
+- If delivery involves multiple arms, set `delivery_model=mixed_or_multiarm` and specify arms in notes; counts treat the record as one unit unless arms are separable in charting.
 - If uptake is only reported as “returned kits” without invited denominator, fill `n_participated` and leave `uptake_pct` blank; still include the study.
 - Do not infer triage pathway beyond what is stated in abstract/OA.

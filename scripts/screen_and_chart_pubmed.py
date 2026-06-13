@@ -131,6 +131,8 @@ def _design(title: str, abstract: str) -> str:
     # Restrict protocol detection to title-level signals.
     if "protocol" in t or "study protocol" in t or "rationale and design" in t:
         return "protocol"
+    if any(k in t for k in ["cost-effectiveness", "cost effectiveness", "modeling", "modelling", "modeled", "modelled"]):
+        return "model"
     if "cluster" in text and "random" in text:
         return "cluster_RCT"
     if "random" in text or "randomised" in text or "randomized" in text:
@@ -175,22 +177,18 @@ def _followup_reporting_level(title: str, abstract: str) -> tuple[str, str]:
         "follow up",
         "referred",
         "referral",
-        "invited",
         "colposcopy",
         "triage",
-        "attend",
-        "attendance",
-        "compliance",
-        "adherence",
-        "completed",
-        "completion",
     ]
     if not _contains_any(text, mention_terms):
         return ("none", "")
 
+    clinical_context = r"(?:hpv[- ]?positive|hrhpv[- ]?positive|positive (?:hpv|self[- ]?sample)|abnormal result|triage|colposcop|cytology|follow[- ]?up|gynecological follow[- ]?up|gynaecological follow[- ]?up)"
+    completion_terms = r"(?:attend|attendance|follow[- ]?up|colposcop|compliance|adherence|completed|completion)"
     ratio_patterns = [
-        r"(\d{1,4})\s*/\s*(\d{1,4})[^.]{0,80}(?:attend|attendance|follow[- ]?up|colposcop|compliance|adherence|completed|completion)",
-        r"(?:attend|attendance|follow[- ]?up|colposcop|compliance|adherence|completed|completion)[^.]{0,80}(\d{1,4})\s*/\s*(\d{1,4})",
+        rf"{clinical_context}[^.]{{0,160}}(\d{{1,4}})\s*/\s*(\d{{1,4}})[^.]{{0,160}}{completion_terms}",
+        rf"{clinical_context}[^.]{{0,160}}{completion_terms}[^.]{{0,160}}(\d{{1,4}})\s*/\s*(\d{{1,4}})",
+        rf"(\d{{1,4}})\s*/\s*(\d{{1,4}})[^.]{{0,160}}{completion_terms}[^.]{{0,160}}{clinical_context}",
     ]
     for pat in ratio_patterns:
         m = re.search(pat, text)
@@ -206,8 +204,8 @@ def _followup_reporting_level(title: str, abstract: str) -> tuple[str, str]:
             return ("completion_reported", pct_str)
 
     pct_patterns = [
-        r"(\d{1,3}(?:\.\d+)?)\s*%[^.]{0,80}(?:attend|attendance|follow[- ]?up|colposcop|compliance|adherence|completed|completion)",
-        r"(?:attend|attendance|follow[- ]?up|colposcop|compliance|adherence|completed|completion)[^.]{0,80}(\d{1,3}(?:\.\d+)?)\s*%",
+        rf"{clinical_context}[^.]{{0,160}}{completion_terms}[^.]{{0,160}}(\d{{1,3}}(?:\.\d+)?)\s*%",
+        rf"(\d{{1,3}}(?:\.\d+)?)\s*%[^.]{{0,160}}{completion_terms}[^.]{{0,160}}{clinical_context}",
     ]
     for pat in pct_patterns:
         m = re.search(pat, text)
@@ -304,9 +302,43 @@ def _parse_uptake_metrics(title: str, abstract: str) -> tuple[str, str, str]:
     return (n_invited, n_participated, uptake_pct)
 
 
-def _is_secondary_review(title: str) -> bool:
+def _is_secondary_review(title: str, abstract: str = "") -> bool:
     t = title.lower()
-    return any(k in t for k in ["systematic review", "scoping review", "meta-analysis", "meta analysis", "review"])
+    text = f"{title}\n{abstract}".lower()
+    title_markers = [
+        "systematic review",
+        "scoping review",
+        "meta-analysis",
+        "meta analysis",
+        "meta-analyses",
+        "meta analyses",
+        "literature review",
+        "focused literature review",
+        "evidence-based review",
+        "a review",
+        " review.",
+        "white paper",
+        "overview",
+    ]
+    if any(k in t for k in title_markers):
+        return True
+    abstract_markers = [
+        "purpose of review",
+        "recent findings",
+        "this review",
+        "review focuses",
+        "review examines",
+        "review summarizes",
+        "comprehensive literature search",
+        "recommendations from",
+    ]
+    if any(k in text for k in abstract_markers):
+        return True
+    # Some broad device/appraisal papers have titles that sound empirical but
+    # describe consolidated literature rather than a primary implementation record.
+    if "consolidated data" in text and "literature search" in text:
+        return True
+    return False
 
 
 @dataclass(frozen=True)
@@ -346,7 +378,7 @@ def main() -> int:
         text = _lower(f"{title}\n{abstract}")
 
         # Quick out: secondary reviews (we only chart primary studies)
-        if _is_secondary_review(title):
+        if _is_secondary_review(title, abstract):
             exclusions.append(Excl(record_id, "title_abstract", "SECONDARY_REVIEW", "Secondary evidence (review) not charted.", "PubMed", url))
             continue
 
@@ -358,10 +390,37 @@ def main() -> int:
             continue
 
         # Scope: must be HPV + self-sampling + cervical screening
-        if not _contains_any(text, ["hpv", "human papillomavirus"]) or not _contains_any(text, ["self-sampling", "self sampling", "self-collected", "self collected"]):
+        self_collection_terms = [
+            "self-sampling",
+            "self sampling",
+            "self-sample",
+            "self sample",
+            "self-collected",
+            "self collected",
+            "self-collection",
+            "self collection",
+            "self-testing",
+            "self testing",
+            "self-test",
+            "self test",
+            "self-swab",
+            "self swab",
+            "self-collect",
+            "self collect",
+            "self-sampler",
+            "self sampler",
+        ]
+        cervical_context = _contains_any(text, ["cervical", "cervix", "cervical-cancer", "cervical cancer", "pap", "colposcopy"])
+        hpv_context = _contains_any(text, ["hpv", "human papillomavirus"])
+        vaginal_self_collection_context = (
+            cervical_context
+            and _contains_any(text, self_collection_terms)
+            and _contains_any(text, ["vaginal", "cervicovag", "cervico-vaginal", "self-sampler", "self sampler", "self-sampling kit"])
+        )
+        if not (hpv_context or vaginal_self_collection_context) or not _contains_any(text, self_collection_terms):
             exclusions.append(Excl(record_id, "title_abstract", "NOT_CERVICAL_SCREENING", "Not clearly HPV self-sampling in cervical screening context.", "PubMed", url))
             continue
-        if not _contains_any(text, ["cervical", "cervix", "cervical-cancer", "cervical cancer"]):
+        if not cervical_context:
             exclusions.append(Excl(record_id, "title_abstract", "NOT_CERVICAL_SCREENING", "Not cervical screening context.", "PubMed", url))
             continue
 
@@ -383,8 +442,40 @@ def main() -> int:
             "non-attend",
             "never-screen",
             "non-responder",
+            "non responder",
+            "non-respond",
+            "nonrespond",
             "hard-to-reach",
             "underserved",
+            "overdue",
+            "infrequently screened",
+            "not screened",
+            "do not attend",
+            "does not attend",
+            "not attend",
+            "not responded",
+            "had not responded",
+            "screening was overdue",
+            "whose screening was overdue",
+            "no pap",
+            "without a pap",
+            "without pap",
+            "low-income",
+            "low income",
+            "medically underserved",
+            "safety-net",
+            "safety net",
+            "unhoused",
+            "priority populations",
+            "rural",
+            "remote",
+            "indigenous",
+            "māori",
+            "maori",
+            "pacific",
+            "minority",
+            "migrant",
+            "immigrant",
         ]
         if not _contains_any(text, underscreen_terms):
             exclusions.append(Excl(record_id, "title_abstract", "NOT_UNDERSCREENED_FOCUS", "Does not clearly target underscreened/nonattender populations.", "PubMed", url))

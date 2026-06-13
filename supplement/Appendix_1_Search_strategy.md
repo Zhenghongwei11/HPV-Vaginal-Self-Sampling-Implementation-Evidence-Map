@@ -12,7 +12,7 @@
 
 Notes:
 - This is a **scoping** search: run iteratively and stop when new queries add few/no new eligible studies.
-- The evidence map run reported in the manuscript used **Query 01** and **Query 02** (see the run log). The additional query blocks below are provided as optional extensions when coverage is incomplete.
+- The evidence map run reported in this evidence map used **Query 01** and **Query 02** (see the run log). The additional query blocks below are provided as optional extensions when coverage is incomplete.
 - Recommended export format for reproducibility: PubMed UI → **Send to → File → Format: PubMed (.nbib)**.
 - Optional efficiency filters:
   - Add `NOT urine[Title/Abstract]` to reduce urine self-sampling noise (we exclude urine anyway).

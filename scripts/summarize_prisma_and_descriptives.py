@@ -136,13 +136,13 @@ def main() -> int:
         )
         overall = step.mean().reset_index()
         overall.columns = ["element", "proportion"]
-        overall["n_studies"] = len(s)
+        overall["n_records"] = len(s)
         overall.to_csv(out_dir / "cascade_reporting_overall.tsv", sep="\t", index=False)
 
         if "delivery_model" in s.columns:
             s2 = pd.concat([s[["delivery_model"]].fillna("UNK"), step], axis=1)
             by_model = s2.groupby("delivery_model", dropna=False).mean(numeric_only=True).reset_index()
-            by_model.insert(1, "n_studies", s2.groupby("delivery_model")["delivery_model"].size().values)
+            by_model.insert(1, "n_records", s2.groupby("delivery_model")["delivery_model"].size().values)
             by_model.to_csv(out_dir / "cascade_reporting_by_delivery_model.tsv", sep="\t", index=False)
 
     # Follow-up reporting level by delivery model (key “落地闭环” table)

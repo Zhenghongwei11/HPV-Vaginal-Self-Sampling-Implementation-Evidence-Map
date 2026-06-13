@@ -1,10 +1,8 @@
-.DS_Store
 __pycache__/
-*.pyc
-.pytest_cache/
-
-.venv/
-venv/
-
-dist/
-tmp/
+*.py[cod]
+.DS_Store
+.env
+token
+*.docx
+*.tmp
+release_assets/
