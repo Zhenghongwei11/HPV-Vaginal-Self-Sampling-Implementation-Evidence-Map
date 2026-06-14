@@ -2,7 +2,7 @@
 
 This project treats implementation as an **end-to-end cascade** rather than a single uptake metric. The outcome-visibility set below is designed for **HPV vaginal self-sampling** among **underscreened** populations.
 
-This is not intended as a mandate that every single implementation article report every domain. Implementation programmes are often reported across several outputs because of journal word limits, figure/table limits, staged roll-out, and distinct analytic aims. The practical recommendation is that each programme should make the cascade visible somewhere across the main article, supplementary files, companion papers, trial/protocol records, public programme reports, or linked repositories.
+This is not intended as a mandate that every single implementation manuscript report every domain. Implementation programmes are often reported across several outputs because of journal word limits, figure/table limits, staged roll-out, and distinct analytic aims. The practical recommendation is that each programme should make the cascade visible somewhere across the main article, supplementary files, companion papers, trial/protocol records, public programme reports, or linked repositories.
 
 ## 1) Programme-level outcome-visibility set
 ### A. Reach / offer (denominator)
@@ -21,7 +21,7 @@ This is not intended as a mandate that every single implementation article repor
 - Triage/referral pathway for HPV-positive participants (e.g., cytology, genotyping, direct colposcopy).
 - Whether a follow-up invitation/referral was issued (and how).
 
-### E. Follow-up completion (the “闭环” outcome)
+### E. Follow-up completion
 - **Follow-up completion / attendance** among HPV-positive participants (numerator/denominator or %).
 - Time window for completion (if available) and handling of loss to follow-up.
 - Any support components enabling completion (reminders, navigation, incentives).
@@ -42,7 +42,7 @@ The outcome-visibility set maps to the charted domains used in this evidence map
   - where evidence is thin (cells/gaps) and which reporting elements are most frequently missing.
 
 ## 4) Companion-publication principle
-When a programme reports different cascade domains in companion publications, those outputs should be explicitly cross-referenced. A primary uptake paper, a triage/prevalence paper, a cost-effectiveness paper, and a later scale-up report may together provide a more complete programme-level cascade than any single article.
+When a programme reports different cascade domains in companion publications, those outputs should be explicitly cross-referenced. A primary uptake paper, a triage/prevalence paper, a cost-effectiveness paper, and a later scale-up report may together provide a more complete programme-level cascade than any single manuscript.
 
 ## 5) Relationship to established implementation and reporting frameworks
 
@@ -57,4 +57,4 @@ This outcome-visibility set is not intended to replace established reporting gui
 | StaRI | Supports separating the implementation strategy from the clinical/public-health intervention and reporting both strands clearly. |
 | PROGRESS-Plus | Supports equity-relevant stratification by social and structural characteristics when data collection and sample size allow. |
 
-For this evidence map, the practical implication is that HPV self-sampling reports should make the pathway from invitation to follow-up visible across linked programme outputs. The set should be used flexibly: some domains may appear in the main paper, others in supplements, companion publications, registry entries, programme reports, or public repositories.
+For this manuscript, the practical implication is that HPV self-sampling reports should make the pathway from invitation to follow-up visible across linked programme outputs. The set should be used flexibly: some domains may appear in the main paper, others in supplements, companion publications, registry entries, programme reports, or public repositories.

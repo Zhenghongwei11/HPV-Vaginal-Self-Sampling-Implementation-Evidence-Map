@@ -58,7 +58,7 @@ This codebook defines how to chart included records into `results/map/study_inde
 - `n_participated` (integer or blank)
 - `uptake_pct` (0–100; blank if not computable)
 
-### Follow-up closure (the “落地闭环” anchor)
+### Follow-up closure anchor
 - `followup_reporting_level`: `none` | `referral_only` | `completion_reported`
 - `followup_closure_reported`: `Y`/`N` (derived convenience flag; `Y` if `followup_reporting_level != none`)
 - `followup_completion_pct`: blank if not available

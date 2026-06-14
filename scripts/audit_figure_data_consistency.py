@@ -136,7 +136,7 @@ def main() -> int:
     expected_identified = int(overview_map.get("search_export_total_rows", -1))
     expected_excluded = int(overview_map.get("excluded_total", -1))
 
-    # Basic totals used in the evidence-map report.
+    # Basic totals used in manuscript
     delivery_totals = _counts(df, "delivery_model").to_dict()
     target_totals = _counts(df, "target_population").to_dict()
     followup_totals = _counts(df, "followup_reporting_level").to_dict()

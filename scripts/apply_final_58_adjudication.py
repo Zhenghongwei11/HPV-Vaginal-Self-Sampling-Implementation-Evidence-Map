@@ -60,16 +60,16 @@ AUDIT_FIELDS = [
     "cost_reported",
     "candidate_core_status",
     "candidate_reason",
-    "manual_curator_decision",
-    "manual_curator_notes",
+    "manual_reviewer_decision",
+    "manual_reviewer_notes",
     "manual_core_decision",
     "manual_decision_reason",
     "manual_evidence_text",
     "manual_followup_level_if_changed",
     "manual_followup_pct_if_changed",
     "manual_notes",
-    "curator_id",
-    "curation_date",
+    "reviewer_initials",
+    "review_date",
 ]
 
 
@@ -200,7 +200,7 @@ def default_study_row(pmid: str, meta: dict[str, str], chart: dict[str, str]) ->
             "equity_stratified_results_reported": "N",
             "acceptability_reported": "N",
             "cost_reported": "N",
-            "limitations": "Added during final eligibility reconciliation; charted from PubMed abstract-level information.",
+            "limitations": "Added after final adjudication of high-risk false-negative records; charted from PubMed abstract-level information.",
         }
     )
     row.update(chart)
@@ -228,16 +228,16 @@ def audit_row(pmid: str, study_row: dict[str, str], decision: str, reason: str) 
         "cost_reported": study_row.get("cost_reported", ""),
         "candidate_core_status": core_status,
         "candidate_reason": "Final 58-record adjudication",
-        "manual_curator_decision": "",
-        "manual_curator_notes": "",
+        "manual_reviewer_decision": "",
+        "manual_reviewer_notes": "",
         "manual_core_decision": manual_core,
         "manual_decision_reason": reason,
-        "manual_evidence_text": "Final eligibility reconciliation based on PubMed abstract evidence and the adjudication worksheet.",
+        "manual_evidence_text": "Final adjudication based on PubMed abstract evidence and independent review worksheet.",
         "manual_followup_level_if_changed": "",
         "manual_followup_pct_if_changed": "",
-        "manual_notes": "Added during final eligibility reconciliation.",
-        "curator_id": "curation_team",
-        "curation_date": "2026-06-13",
+        "manual_notes": "Added after final 58-record adjudication; not part of the earlier broad map.",
+        "reviewer_initials": "COD+HR",
+        "review_date": "2026-06-13",
     }
 
 

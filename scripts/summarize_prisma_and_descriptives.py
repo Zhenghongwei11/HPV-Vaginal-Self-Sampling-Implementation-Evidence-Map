@@ -145,7 +145,7 @@ def main() -> int:
             by_model.insert(1, "n_records", s2.groupby("delivery_model")["delivery_model"].size().values)
             by_model.to_csv(out_dir / "cascade_reporting_by_delivery_model.tsv", sep="\t", index=False)
 
-    # Follow-up reporting level by delivery model (key “落地闭环” table)
+    # Follow-up reporting level by delivery model.
     followup_col = "followup_reporting_level" if "followup_reporting_level" in study.columns else "followup_closure_reported"
     if not study.empty and all(c in study.columns for c in ["delivery_model", followup_col]):
         tmp = study.copy()

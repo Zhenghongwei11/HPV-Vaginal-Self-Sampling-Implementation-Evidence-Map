@@ -28,4 +28,4 @@ If these fields could not be obtained without subscription-only full text, the r
 All exclusions are recorded in Dataset S2, including exclusions for insufficient record/abstract information.
 
 ## Bias Note
-This access policy may introduce selection and information bias because open-access availability and abstract completeness are not random across countries, journals, study types, and programme types. This release therefore treats unknown categories as record-level non-reporting rather than definitive programme-level absence and reports an access and information-bias assessment in Appendix 6.
+This access policy may introduce selection and information bias because open-access availability and abstract completeness are not random across countries, journals, study types, and programme types. The manuscript therefore treats unknown categories as record-level non-reporting rather than definitive programme-level absence and reports an access and information-bias assessment in Appendix 6.

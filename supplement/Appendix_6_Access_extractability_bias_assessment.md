@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This appendix addresses the concern that an abstract/open-access-constrained charting strategy may introduce selection and information bias. The analysis is based on the frozen charting outputs used for the frozen evidence map:
+This appendix addresses the concern that an abstract/open-access-constrained charting strategy may introduce selection and information bias. The analysis is based on the frozen charting outputs used for the submitted evidence map:
 
 - Dataset S1: `supplement/Dataset_S1_Charted_study_index.tsv`
 - Dataset S2: `supplement/Dataset_S2_Exclusion_log.tsv`
@@ -74,9 +74,9 @@ Appendix 5 manually reviewed 30 records initially labeled as unknown delivery mo
 1. Unknown labels often reflect limited record-level reporting rather than automated charting failure.
 2. Some unknown labels can be reduced by targeted manual review, especially when the abstract contains implicit delivery details.
 
-## Interpretation for this evidence map
+## Implication for the revised manuscript
 
-This evidence map should avoid claims that the underlying implementation programmes failed to measure or report cascade elements. A more defensible interpretation is:
+The revised manuscript should avoid claims that the underlying implementation programmes failed to measure or report cascade elements. A more defensible interpretation is:
 
 > In PubMed-indexed, record-level reporting, downstream completion, support mechanisms, equity analyses, and cost/resource signals were often not visible. This may reflect true reporting gaps, distribution of evidence across companion publications, limited abstract detail, or access restrictions.
 
