@@ -4,7 +4,7 @@
 
 This appendix addresses the concern that HPV self-sampling implementation programmes often produce multiple interdependent publications, with different papers reporting different parts of the implementation cascade. A publication-level evidence map can therefore understate programme-level evidence completeness if companion papers are not linked.
 
-This is a targeted companion-publication mapping exercise focused on reviewer-named or high-salience programmes. It is not a full new systematic search or complete programme-level meta-review.
+This is a targeted companion-publication mapping exercise focused on reviewer-named or high-salience programmes. It is not a full new systematic search or complete programme-level meta-review. Publications in this appendix are cited inline with author, year, journal, DOI, and PMID where available; the supplementary manuscript reference list mirrors the main manuscript references and is not intended to duplicate every inline companion-publication item in this appendix.
 
 ## Interpretation guide
 
